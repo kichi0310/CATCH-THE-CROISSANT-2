@@ -1,43 +1,28 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Catch the Croissant</title>
-    <style>
-        #login-container, #popup-container {
-            text-align: center;
-            margin-top: 50px;
-        }
-        #game-container {
-            display: none;
-            text-align: center;
-        }
-        canvas {
-            border: 1px solid #ccc;
-            background: #f8f8f8;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catch the Croissant</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div id="login-container">
-        <h1>Đăng nhập để chơi</h1>
-        <input type="text" id="phoneInput" placeholder="Nhập số điện thoại">
-        <button onclick="startGame()">Bắt đầu chơi</button>
-    </div>
+  <div id="login-container">
+    <h1>Đăng nhập để chơi</h1>
+    <input type="text" id="phone" placeholder="Nhập số điện thoại" />
+    <button id="start-btn">Bắt đầu chơi</button>
+  </div>
 
-    <div id="game-container">
-        <h2 id="score">Điểm: 0</h2>
-        <h2 id="timer">Thời gian: 45</h2>
-        <canvas id="gameCanvas" width="400" height="600"></canvas>
-    </div>
+  <canvas id="gameCanvas" width="480" height="640"></canvas>
 
-    <div id="popup-container" style="display:none;">
-        <h2>Kết thúc!</h2>
-        <p id="popup-message"></p>
-        <button onclick="restartGame()">Chơi lại</button>
-    </div>
+  <div id="popup" class="hidden">
+    <h2>🎉 Chúc mừng!</h2>
+    <p id="reward-text"></p>
+    <img id="qr-code" src="assets/qrcode.png" alt="QR nhận quà" />
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
 
