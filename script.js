@@ -73,7 +73,7 @@ function endGame() {
   resultDisplay.classList.remove('hidden');
   rewardSound.play();
 
-  if (score >= 200) {
+  if (score >= 300) {
     resultDisplay.innerHTML = `🎉 Great job! You scored ${score} points! <br>🥐 You win 10% OFF!`;
   } else {
     resultDisplay.innerHTML = `You scored ${score} points. <br>Try again to win!`;
