@@ -1,0 +1,38 @@
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #fdfdfd;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin-top: 20px;
+}
+.info {
+  margin: 10px 0;
+  font-size: 18px;
+}
+#gameArea {
+  margin: 20px auto;
+  width: 400px;
+  height: 600px;
+  border: 2px solid #f0ad4e;
+  background-image: url('assets/images/background.png');
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+.croissant {
+  position: absolute;
+  width: 50px;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+#result {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
