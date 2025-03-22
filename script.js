@@ -55,9 +55,9 @@ function spawnCroissant() {
     catchSound.play();
 
     if (croissant.src.includes('gold-croissant.png')) {
-      score += 5;
+      score += 10;
     } else {
-      score += 1;
+      score += 5;
     }
 
     scoreDisplay.textContent = score;
