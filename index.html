@@ -1,24 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Catch the Croissant</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Croissant - Crème & Crust</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Catch the Croissant</h1>
-  <div class="info">
-    ⏰ Time: <span id="time">45</span> sec
-    <br>
-    ⭐ Score: <span id="score">0</span>
-  </div>
-  <div id="gameArea">
-    <!-- Croissants will appear here -->
-  </div>
-  <div id="result" class="hidden"></div>
+    <div id="login-container">
+        <h2>Đăng nhập để chơi</h2>
+        <input type="tel" id="phoneInput" placeholder="Nhập số điện thoại" />
+        <button onclick="startGame()">Bắt đầu chơi</button>
+    </div>
 
-  <script src="script.js"></script>
+    <div id="game-container" style="display:none;">
+        <canvas id="gameCanvas" width="360" height="640"></canvas>
+        <div id="score">Điểm: 0</div>
+        <div id="timer">Thời gian: 45</div>
+    </div>
+
+    <div id="popup-container" style="display:none;">
+        <div id="popup-message"></div>
+        <button onclick="restartGame()">Chơi lại</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
