@@ -7,13 +7,9 @@ let phoneNumber = "";
 let playCount = 0;
 
 const normalCroissant = new Image();
-normalCroissant.src = 'assets/croissant.png';
-
+normalCroissant.src = 'assets/croissant.png';  // Thay đường dẫn đúng
 const goldCroissant = new Image();
-goldCroissant.src = 'assets/gold-croissant.png';
-
-const catchSound = new Audio('assets/catch.mp3');
-const rewardSound = new Audio('assets/reward.mp3');
+goldCroissant.src = 'assets/gold-croissant.png';  // Thay đường dẫn đúng
 
 function startGame() {
     phoneNumber = document.getElementById('phoneInput').value.trim();
@@ -28,14 +24,15 @@ function startGame() {
         return;
     }
 
+    console.log("Bắt đầu chơi, số điện thoại:", phoneNumber);
+
     document.getElementById('login-container').style.display = 'none';
-    document.getElementById('game-container').style.display = 'block';
     document.getElementById('popup-container').style.display = 'none';
+    document.getElementById('game-container').style.display = 'block';
 
     canvas = document.getElementById('gameCanvas');
     ctx = canvas.getContext('2d');
 
-    // Reset game variables
     score = 0;
     timeLeft = 45;
     croissants = [];
@@ -43,10 +40,10 @@ function startGame() {
     document.getElementById('score').innerText = `Điểm: ${score}`;
     document.getElementById('timer').innerText = `Thời gian: ${timeLeft}`;
 
-    // Bắt sự kiện click để bắt bánh
+    // Đảm bảo không add trùng sự kiện click
+    canvas.removeEventListener('click', handleClick);
     canvas.addEventListener('click', handleClick);
 
-    // Bắt đầu game loop
     gameInterval = setInterval(gameLoop, 30);
     timerInterval = setInterval(updateTimer, 1000);
 }
@@ -65,11 +62,9 @@ function handleClick(e) {
         ) {
             score += c.type === "gold" ? 50 : 5;
             document.getElementById('score').innerText = `Điểm: ${score}`;
-            catchSound.play();
 
             if (c.type === "gold") {
-                rewardSound.play();
-                alert("🎁 Bạn bắt được Gold Croissant! Nhận ngay quà bất ngờ!");
+                alert("🎁 Bắt được Gold Croissant!");
             }
 
             croissants.splice(index, 1);
@@ -94,7 +89,6 @@ function gameLoop() {
         spawnCroissant();
     }
 
-    // Vẽ từng cái bánh rơi
     croissants.forEach((c, index) => {
         c.y += c.speed;
         if (c.y > canvas.height) {
@@ -128,28 +122,28 @@ function endGame() {
     canvas.removeEventListener('click', handleClick);
 
     document.getElementById('popup-container').style.display = 'block';
+    document.getElementById('game-container').style.display = 'none';
 
     let message = `Bạn đạt ${score} điểm!<br><br>`;
 
     if (score >= 350) {
         message += "🥤 Tặng 1 ly Cà phê muối hoặc Matcha Latte miễn phí<br>";
     } else if (score >= 300) {
-        message += "🏅 Nhận huy hiệu 'Thợ săn Croissant' + vinh danh trên fanpage<br>";
+        message += "🏅 Nhận huy hiệu 'Thợ săn Croissant'<br>";
     } else if (score >= 200) {
         message += "🎉 Giảm 10% hóa đơn từ 150k trở lên<br>";
     } else {
         message += "Cố gắng lần sau nhé!";
     }
 
-    message += "<br>➡️ Quét mã QR nhận quà tại cửa hàng Crème & Crust";
+    message += "<br><br>➡️ Quét mã QR nhận quà khi đến cửa hàng Crème & Crust";
     document.getElementById('popup-message').innerHTML = message;
-
-    // Sau này có thể thêm code gửi dữ liệu Google Sheets ở đây
 }
 
 function restartGame() {
     document.getElementById('popup-container').style.display = 'none';
     document.getElementById('login-container').style.display = 'block';
 }
+
 
 
